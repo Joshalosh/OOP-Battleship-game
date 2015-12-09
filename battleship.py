@@ -25,13 +25,17 @@ class Win(Ship):
 	def sink_ship(self):
 		guess_row = int(raw_input("Guess Row: "))
 		guess_col = int(raw_input("Guess Col: "))
-		x.board[guess_row][guess_col] = "X"
 		
 		if guess_row == coord1 and guess_col == coord2:
 			print "Congratulations! You sank my battleship!"
 		else:
-			print "You missed my battleship!"
-			x.print_board()
+			if guess_row not in range(0, len(x.board) - 1) or \
+			guess_col not in range(0, len(x.board[0]) - 1):
+				print "Oops, that guess isn't even in the ocean, dumbass."
+			else:
+				print "You missed my battleship!"
+				x.board[guess_row][guess_col] = "X"
+				x.print_board()
 		
 
 x = Board()
