@@ -32,6 +32,8 @@ class Win(Ship):
 			if guess_row not in range(0, len(x.board) - 1) or \
 			guess_col not in range(0, len(x.board[0]) - 1):
 				print "Oops, that guess isn't even in the ocean, dumbass."
+			elif x.board[guess_row][guess_col] == "X":
+				print "You already guessed that, dipshit."
 			else:
 				print "You missed my battleship!"
 				x.board[guess_row][guess_col] = "X"
