@@ -23,6 +23,7 @@ class Ship(Board):
 class Win(Ship):
 
 	def fire_missile(self):
+		x.print_board()
 		while True:
 			try:
 				self.guess_row = int(raw_input("Guess Row: "))
@@ -54,8 +55,15 @@ class Win(Ship):
 				print "You missed my battleship!"
 				x.board[self.guess_row][self.guess_col] = "X"
 				x.print_board()
+				
+	def game_turns(self):
+		for turn in range(4):
+			print "Turn {}.".format(turn + 1)
+			check.fire_missile()
+			check.sink_ship()
 		
-
+	
+	
 x = Board()
 
 
@@ -67,10 +75,8 @@ coord2 = ship1.random_col()
 print coord1
 print coord2
 
-x.print_board()
 
 check = Win()
 
-check.fire_missile()
-check.sink_ship()
+check.game_turns()
 
