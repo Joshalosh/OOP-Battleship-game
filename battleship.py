@@ -45,6 +45,7 @@ class Win(Ship):
 	def sink_ship(self):
 		if self.guess_row == coord1 and self.guess_col == coord2:
 			print "Congratulations! You sank my battleship!"
+			break
 		else:
 			if self.guess_row not in range(0, len(x.board)) or \
 			self.guess_col not in range(0, len(x.board[0])):
