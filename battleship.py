@@ -61,6 +61,9 @@ class Win(Ship):
 			print "Turn {}.".format(turn + 1)
 			check.fire_missile()
 			check.sink_ship()
+			if turn == 3:
+				print "YOU LOSE! \n\
+				you fucking loser."
 		
 	
 	
