@@ -21,22 +21,38 @@ class Ship(Board):
 		return randint(0, len(self.board[0]) -1)
 		
 class Win(Ship):
+
+	def fire_missile(self):
+		while True:
+			try:
+				self.guess_row = int(raw_input("Guess Row: "))
+			except ValueError:
+				print "Needs a number input."
+				continue
+			else:
+				while True:
+					try:
+						self.guess_col = int(raw_input("Guess Col: "))
+					except ValueError:
+						print "Haven't you learned from your mistake? \n\
+						You need a FUCKING number!"
+						continue
+					else:
+						break
+				break			
 	
 	def sink_ship(self):
-		guess_row = int(raw_input("Guess Row: "))
-		guess_col = int(raw_input("Guess Col: "))
-		
-		if guess_row == coord1 and guess_col == coord2:
+		if self.guess_row == coord1 and self.guess_col == coord2:
 			print "Congratulations! You sank my battleship!"
 		else:
-			if guess_row not in range(0, len(x.board) - 1) or \
-			guess_col not in range(0, len(x.board[0]) - 1):
+			if self.guess_row not in range(0, len(x.board)) or \
+			self.guess_col not in range(0, len(x.board[0])):
 				print "Oops, that guess isn't even in the ocean, dumbass."
-			elif x.board[guess_row][guess_col] == "X":
+			elif x.board[self.guess_row][self.guess_col] == "X":
 				print "You already guessed that, dipshit."
 			else:
 				print "You missed my battleship!"
-				x.board[guess_row][guess_col] = "X"
+				x.board[self.guess_row][self.guess_col] = "X"
 				x.print_board()
 		
 
@@ -55,5 +71,6 @@ x.print_board()
 
 check = Win()
 
+check.fire_missile()
 check.sink_ship()
 
